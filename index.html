@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conference Ticket Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="start">
+    <div class="parts">
+      <div class="parto">
+        <img src="./assets/images/pattern-circle.svg" alt="Decorative circle pattern">
+      </div>
+      <div class="partt">
+        <img src="./assets/images/pattern-squiggly-line-top.svg" alt="Decorative squiggly line">
+      </div>
+      <div class="partth">
+        <img src="./assets/images/pattern-circle.svg" alt="Decorative circle pattern">
+      </div>
+      <div class="partf">
+        <img src="./assets/images/pattern-squiggly-line-bottom.svg" alt="Decorative squiggly line">
+      </div>
+    </div>
+    
+    <!-- Form Section -->
+    <div class="form-container" id="form-container">
+      <header class="header">
+        <div class="logo">
+          <img src="./assets/images/logo-mark.svg" alt="Coding Conf Logo">
+          <h1>Coding Conf</h1>
+        </div>
+        <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>
+        <p>Secure your spot at next year's biggest coding conference.</p>
+      </header>
+
+      <form class="form" id="ticket-form">
+        <label for="avatar" class="upload-label">Upload Avatar</label>
+        <div class="upload-box">
+          <label for="avatar" class="upload-icon">
+            <img src="assets/images/icon-upload.svg" alt="Upload">
+          </label>
+          <input type="file" id="avatar" class="file-input" style="display: none;">
+          <p>Drag and drop or click to upload</p>
+        </div>
+        <span> <img src="assets/images/icon-info.svg" alt="">Upload your photo (JPG or PNG, max size: 500KB).</span>
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your Full Name">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="example@email.com">
+
+        <label for="github">GitHub Username</label>
+        <input type="text" id="github" placeholder="@yourusername">
+
+        <button type="submit" class="btn">Generate My Ticket</button>
+      </form>
+    </div>
+
+    <!-- Generated Ticket -->
+    <div class="tic hidden" id="ticket-message">
+      <div class="logo">
+        <img src="./assets/images/logo-mark.svg" alt="Coding Conf Logo">
+        <h1>Coding Conf</h1>
+      </div>
+      <h2>Congrats, <span id="username-display"></span>! <br> Your ticket is ready.</h2>
+      <p>We've emailed your ticket <br> to <span id="email-display"></span> and will send updates <br> in the run-up to the event.</p>
+    </div>
+
+    <!-- Generated Ticket Section -->
+    <div class="ticket-container hidden" id="ticket-container">
+      <div class="ticket">
+        <div class="ticket-header">
+          <div class="logo">
+            <img src="./assets/images/logo-mark.svg" alt="Coding Conf Logo" class="logo-img">
+            <h2>Coding Conf</h2>
+          </div>
+          <p class="event-details">Jan 31, 2025 / Austin, TX</p>
+        </div>
+    
+        <div class="ticket-user">
+          <img src="./assets/images/user-avatar.png" alt="User Avatar" class="user-avatar">
+          <div class="user-info">
+            <h2 class="user-name" id="user-name"></h2>
+            <div class="user-email">
+              <img src="assets/images/icon-github.svg" alt="GitHub">
+              <p id="user-email"></p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="rot">
+          <div class="ticket-number">
+            <p>#40609</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    </div>
+  </div>
+
+  <script>
+ document.getElementById('ticket-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Hide the form section
+  document.querySelector('.form-container').classList.add('hidden');
+  console.log('Form section hidden');
+
+  // Show the generated ticket section
+  const ticketContainer = document.getElementById('ticket-container');
+  ticketContainer.classList.remove('hidden');
+  console.log('Ticket section shown');
+
+  // Get user input
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var github = document.getElementById('github').value;
+
+  // Display ticket details
+  if (name && email && github) {
+    document.getElementById('username-display').textContent = name;
+    document.getElementById('email-display').textContent = email;
+    document.getElementById('user-name').textContent = name;
+    document.getElementById('user-email').textContent = github;
+    console.log('Ticket details updated');
+  }
+});
+
+  </script>
+</body>
+</html>
